@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://d1jc6ujltkbcn"]
+
+[ext_resource type="Script" uid="uid://phhr304r73cj" path="res://player.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bjsjhj0lwve83" path="res://Mannequin.gd" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cdbud58emmrn6" path="res://CrosshairUI.tscn" id="2_5vw27"]
+[ext_resource type="PackedScene" uid="uid://ur5cjhdj46r7" path="res://ExplosiveBarrel.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cjwfn0ujp7mfi" path="res://HUD.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://6bx1um7lu7eb" path="res://AmmoSphere.tscn" id="5_272bh"]
+[ext_resource type="PackedScene" uid="uid://copihc405ulmn" path="res://PowderJar.tscn" id="6_5vw27"]
+[ext_resource type="PackedScene" uid="uid://bpfbs63kijlt0" path="res://ShotgunBox.tscn" id="7_kek77"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i0esw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jtra8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i0esw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i0esw"]
+radius = 0.6
+
+[node name="Main" type="Node3D" unique_id=1061806203]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1803518531]
+transform = Transform3D(26.671677, 0, 0, 0, 1, 0, 0, 0, 17.510403, 0, 0, 0)
+use_collision = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D" unique_id=1846419630]
+shape = SubResource("BoxShape3D_ig7tw")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=2094222282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("1_ig7tw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1609077794]
+shape = SubResource("CapsuleShape3D_i0esw")
+
+[node name="Head" type="Node3D" parent="Player" unique_id=1293896692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head" unique_id=1151880536]
+
+[node name="InteractionRay" type="RayCast3D" parent="Player/Head/Camera3D" unique_id=531137038]
+target_position = Vector3(0, 0, -10)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="CarrySocket" type="Node3D" parent="Player/Head/Camera3D" unique_id=158379668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.3, -1.2)
+
+[node name="Flashlight" type="SpotLight3D" parent="Player/Head" unique_id=815309880]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=1448206804]
+
+[node name="CrosshairUI" parent="Player/CanvasLayer" unique_id=623419088 instance=ExtResource("2_5vw27")]
+
+[node name="Mannequin" type="CharacterBody3D" parent="." unique_id=1964530564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.897, 1, 0)
+script = ExtResource("2_0xm2m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mannequin" unique_id=1792658700]
+shape = SubResource("CapsuleShape3D_jtra8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mannequin" unique_id=1859024911]
+mesh = SubResource("CapsuleMesh_i0esw")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Mannequin" unique_id=151453968]
+
+[node name="TouchArea" type="Area3D" parent="Mannequin" unique_id=1379268770]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mannequin/TouchArea" unique_id=865478619]
+shape = SubResource("SphereShape3D_i0esw")
+
+[node name="ExplosiveBarrel" parent="." unique_id=239442586 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8718853, 1, 5.815296)
+
+[node name="HUD" parent="." unique_id=1094233123 instance=ExtResource("4_1bvp3")]
+
+[node name="AmmoSphere" parent="." unique_id=1377880697 instance=ExtResource("5_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, 5)
+
+[node name="PowderJar" parent="." unique_id=699617690 instance=ExtResource("6_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -6)
+
+[node name="ShotgunBox" parent="." unique_id=1674362650 instance=ExtResource("7_kek77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 6)

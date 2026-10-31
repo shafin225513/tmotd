@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://6bx1um7lu7eb"]
+
+[ext_resource type="Script" uid="uid://da70xqk5w8iyj" path="res://AmmoSphere.gd" id="1_h75eg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h75eg"]
+albedo_color = Color(0.2901961, 0.42745098, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_i0esw"]
+material = SubResource("StandardMaterial3D_h75eg")
+radius = 0.15
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i0esw"]
+radius = 0.6
+
+[node name="AmmoSphere" type="Area3D" unique_id=1377880697]
+script = ExtResource("1_h75eg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2121584530]
+layers = 2
+mesh = SubResource("SphereMesh_i0esw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1662220951]
+shape = SubResource("SphereShape3D_i0esw")

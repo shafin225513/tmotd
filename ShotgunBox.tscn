@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bpfbs63kijlt0"]
+
+[ext_resource type="Script" uid="uid://cuhmal1avku2u" path="res://ShotgunBox.gd" id="1_wj5ab"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wj5ab"]
+albedo_color = Color(0.050980393, 0.95686275, 0.03529412, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i0esw"]
+material = SubResource("StandardMaterial3D_wj5ab")
+size = Vector3(0.15, 0.2, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i0esw"]
+size = Vector3(0.2, 0.4, 1)
+
+[node name="ShotgunBox" type="RigidBody3D" unique_id=1674362650]
+script = ExtResource("1_wj5ab")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1193670098]
+layers = 2
+mesh = SubResource("BoxMesh_i0esw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1342420635]
+shape = SubResource("BoxShape3D_i0esw")

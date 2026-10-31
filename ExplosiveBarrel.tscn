@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ur5cjhdj46r7"]
+
+[ext_resource type="Script" uid="uid://di5y8u6a7de00" path="res://ExplosiveBarrel.gd" id="1_jtpv8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i0esw"]
+height = 0.9719238
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtra8"]
+albedo_color = Color(1, 0.07450981, 0.29411766, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_i0esw"]
+material = SubResource("StandardMaterial3D_jtra8")
+top_radius = 0.35
+bottom_radius = 0.35
+height = 1.0
+
+[node name="ExplosiveBarrel" type="RigidBody3D" unique_id=239442586]
+script = ExtResource("1_jtpv8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1557576734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009643555, 0)
+shape = SubResource("CylinderShape3D_i0esw")
+debug_color = Color(0.94535804, 0.8703405, 0.6852974, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=849462527]
+layers = 2
+mesh = SubResource("CylinderMesh_i0esw")

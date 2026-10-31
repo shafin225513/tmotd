@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://copihc405ulmn"]
+
+[ext_resource type="Script" uid="uid://cyr02bmvrsfbm" path="res://PowderJar.gd" id="1_mo7kc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mo7kc"]
+albedo_color = Color(0, 0, 0, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_i0esw"]
+material = SubResource("StandardMaterial3D_mo7kc")
+top_radius = 0.12
+height = 0.3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i0esw"]
+height = 0.4
+
+[node name="PowderJar" type="Area3D" unique_id=699617690]
+script = ExtResource("1_mo7kc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1949559958]
+layers = 2
+mesh = SubResource("CylinderMesh_i0esw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=806163760]
+shape = SubResource("CylinderShape3D_i0esw")
